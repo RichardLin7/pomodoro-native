@@ -26,8 +26,6 @@ export default class App extends Component {
       stopBreak,
     } = this.state;
 
-    const preInt = this.state.index; // decides whether or not a intermediate goal was set prior or not
-
     if (finishedGoal === false && showBreakTimer === false) {
       return (
         <View style={styles.container}>
@@ -53,6 +51,8 @@ export default class App extends Component {
           })}
           {showTimer && <Button title={"Skip Timer"} onPress={this._22Timer} />}
 
+          {/* Here begins transitions and questions. */}
+
           <Text></Text>
           {showMain && (
             <Main
@@ -64,7 +64,9 @@ export default class App extends Component {
 
           {setInt && (
             <View>
-              <Text>Would you like to set a Intermediate Goal?</Text>
+              <Text>
+                Would you like to set a Intermediate Goal for the previous Goal?
+              </Text>
               <Button
                 title={"Yes"}
                 onPress={() => this.hideComponent("showInt")}
@@ -208,7 +210,7 @@ export default class App extends Component {
 
   _newInt() {
     this._subGoal();
-    this.hideComponent("showTimer");
+    this.hideComponent("setInt");
   }
 
   _subChange(event) {
@@ -278,7 +280,7 @@ export default class App extends Component {
   hideComponent(name) {
     switch (name) {
       case "setInt":
-        this.setState({ showMain: false, setInt: true });
+        this.setState({ showMain: false, setInt: true, showInt: false });
         break;
       case "showInt":
         this.setState({ setInt: false, showInt: true });
