@@ -1,5 +1,5 @@
 pomodoro-native
 ============
-This is a repo for a Pomodoro Timer App made with Express and React Native.
+This is a repo for a Pomodoro Timer App made with Expo and React Native.
 
 
